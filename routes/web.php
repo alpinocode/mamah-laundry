@@ -11,6 +11,7 @@ use App\Http\Controllers\ProductController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\RatingController;
 use App\Http\Middleware\RolePermission;
+use App\Http\Middleware\UserRolePermission;
 use Illuminate\Support\Facades\Route;
 
 Route::get('/', [HomeController::class, 'homeView'])->name('home');
@@ -37,7 +38,7 @@ Route::middleware(['auth', RolePermission::class, 'verified'])->group(function (
     Route::patch('/admin/order/{order}', [AdminOrder::class, 'editSchedule'])->name('order.update');
 });
 
-Route::middleware('auth', 'verified')->group(function () {
+Route::middleware('auth', 'verified', UserRolePermission::class)->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');

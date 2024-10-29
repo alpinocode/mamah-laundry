@@ -16,18 +16,15 @@ class AdminOrderCreate extends Controller
         $users = User::all();
         $orderedServices = Order::pluck('service_id')->toArray();
         $services = Services::whereNotIn('id', $orderedServices)->get(); 
-        return view('admin.adminOrderCreate', compact('services', "users"));
-
-
+        return view('admin.adminOrderCreate', compact('services', "users", "orderedServices"));
+        
     }
 
     public function orderCreate(Request $request)
     {
         $valided =$request->validate([
-            // 'tanggalMasuk' => 'required|date',
             'status' => 'required|in:pending,batal,success',
-            'order_transaksi' => 'required|decimal:2,10',
-            // 'tanggalKeluar' => 'required|date',
+            'order_transaksi' => 'required|numeric',
             'user_id' => 'required',
             'service_id' => 'required'    
         ]);

@@ -46,15 +46,15 @@
                                 <input type="date" name="tanggalKeluar" id="tanggalKeluar" class="form-control text-center" style="border-radius: 10px;">
                             </td>
                             <td>
+                                <div >
+                                    <button type="submit" class="btn btn-primary"  style="background-color: #000000; border-radius:10px;">Submit</button>
+                                </div>
                                 
                             </td>
                         </tr>
                         @endforeach
                     </tbody>
                 </table>
-                <div class="mt-4">
-                    <button type="submit" class="btn btn-primary" style="background-color: #000000; border-radius:10px;">Submit</button>
-                </div>
             </form>
         </div>
     </div>
