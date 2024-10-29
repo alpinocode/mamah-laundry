@@ -15,9 +15,11 @@ class UserRolePermission
      */
     public function handle(Request $request, Closure $next): Response
     {
-        if( !$request->user()->hasRole("CUSTOMER")) {
+        if( $request->user()->hasRole("CUSTOMER")) {
+            return $next($request);
+        } else {
             return redirect()->route('admin.createorders')->with('Error', 'Anda Tidak dapat mengakses halaman ini');
+
         }
-        return $next($request);
     }
 }

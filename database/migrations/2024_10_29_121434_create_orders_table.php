@@ -20,6 +20,7 @@ return new class extends Migration
             $table->foreignId('service_id')->references('id')->on('services')->constrained('services')->cascadeOnDelete()->cascadeOnUpdate();
             $table->date('tanggalKeluar');
             $table->timestamps();
+
         });
     }
 

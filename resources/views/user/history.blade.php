@@ -7,8 +7,9 @@
         </h2>
     </x-slot>
     @if ($orders->isEmpty())
-    <div>
-        TIdak ada Tranksaksi
+    <div  style="margin-top: 10px;margin-left: 350px">
+      
+        <img src="{{asset('img/empty.svg')}}" alt="" >
     </div>
     @else
     

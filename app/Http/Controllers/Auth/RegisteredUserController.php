@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Auth;
 
 use App\Http\Controllers\Controller;
+use App\Models\Role;
 use App\Models\User;
 use Illuminate\Auth\Events\Registered;
 use Illuminate\Http\RedirectResponse;
@@ -37,6 +38,8 @@ class RegisteredUserController extends Controller
             'phone_number' => ['required', 'int'],
         ]);
 
+        $costumerRole = Role::where('role_name', 'customer')->first();
+
         $user = User::create([
             'name' => $request->name,
             'email' => $request->email,
@@ -44,6 +47,8 @@ class RegisteredUserController extends Controller
             'phone_number' => $request->phone_number,
         ]);
 
+
+        $user->roles()->attach($costumerRole);
         event(new Registered($user));
 
         Auth::login($user);

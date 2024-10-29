@@ -9,21 +9,21 @@ use Illuminate\Database\Eloquent\Relations\BelongsTo;
 class Order extends Model
 {
     use HasFactory;
-
-    protected $fillable = [
-        "tanggalMasuk",
+    
+ protected $fillable = [
+    "tanggalMasuk",
     "status",
     "order_transaksi",
     "tanggalKeluar",
-    ];
+] ;
 
-    public function user(): BelongsTo
-    {
-        return $this->belongsTo(User::class);
-    }
+public function user(): BelongsTo{
+    return $this->belongsTo(User::class);
+}
 
-    public function service(): BelongsTo
-    {
-        return $this->belongsTo(Services::class);
-    }
+public function service(): BelongsTo
+{
+    return $this->belongsTo(Services::class);
+}
+
 }
